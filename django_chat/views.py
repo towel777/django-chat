@@ -4,4 +4,5 @@ from django.http import HttpResponse
 
 # Create your views here.
 def head_page(request):
-    return HttpResponse('test response')
+
+    return render(request, 'django_chat/main_page.html')
