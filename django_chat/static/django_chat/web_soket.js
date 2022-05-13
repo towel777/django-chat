@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+    const chatBlock = $('#chat_content');
 
     const chatSocket = new WebSocket('ws://localhost:8000/ws/chat/');
 
@@ -8,7 +9,11 @@ $(document).ready(function () {
     }
 
     chatSocket.onmessage = function (ev) {
-        console.log(JSON.parse(ev.data).message);
+        chatBlock.append("<div class=\"media media-chat media-chat-reverse\">\n" +
+            "                      <div class=\"media-body\">\n" +
+            "                       <p>" + JSON.parse(ev.data).message +"</p> \n" +
+            "                      </div>\n" +
+            "                    </div>");
     }
     $('#button_send').on('click', function () {
 
